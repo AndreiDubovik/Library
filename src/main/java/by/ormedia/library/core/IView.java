@@ -5,4 +5,5 @@ import java.util.List;
 public interface IView {
 
 		void showReaders(List<IReader>list);
+		void showMessage(String message);
 }

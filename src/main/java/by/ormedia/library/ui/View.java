@@ -16,11 +16,11 @@ public class View implements IView, ICommandLine{
 
 	@Override
 	public void showReaders(List<IReader> list) {
-		
+		System.out.println("Список читателей:");
 		for(IReader reader:list){
 			System.out.println("reader: "+reader.getName()+" (id:"+reader.getId()+")");
 		}
-		
+		System.out.println("   всего: "+list.size());
 	}
 
 	@Override
@@ -71,6 +71,17 @@ public class View implements IView, ICommandLine{
 				System.out.println("некорректный ввод!");
 				return getInteger(question);
 			}	
+	}
+
+	@Override
+	public Command getNextCommand(String message, Command... commands) {
+		System.out.println(message);
+		return this.getNextCommand(commands);
+	}
+
+	@Override
+	public void showMessage(String message) {
+		System.out.println(message);
 	}
 
 }

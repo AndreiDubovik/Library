@@ -4,7 +4,11 @@ public enum Command {
 	
 	EXIT("Выход"),
 	SHOW_READERS("Показать читателей"),
-	CONTINUE("Продолжить"), ADD("Добавить читателя");
+	CONTINUE("Продолжить"), 
+	ADD_READER("Добавить читателя"),
+	CONFIRM("Подтвердить"),
+	DECLINE("Отклонить");
+	
 	
 	private Command(String command){
 		this.command = command;
