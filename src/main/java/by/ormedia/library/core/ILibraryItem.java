@@ -1,5 +1,8 @@
 package by.ormedia.library.core;
 
-public interface ILibraryItem extends ILibraryObject{
+import by.ormedia.library.controller.Type;
 
+public interface ILibraryItem extends ILibraryObject{
+	
+	public Type getType();
 }

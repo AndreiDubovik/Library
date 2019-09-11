@@ -7,7 +7,11 @@ public enum Command {
 	CONTINUE("Продолжить"), 
 	ADD_READER("Добавить читателя"),
 	CONFIRM("Подтвердить"),
-	DECLINE("Отклонить");
+	DECLINE("Отклонить"),
+	ADD_LIBRARY_ITEM("Добавить в библиотеку"),
+	ADD_BOOK("Добавить книгу"),
+	SHOW_ALL_LIBRARY_ITEMS("Показать весь список библиотеки");
+	
 	
 	
 	private Command(String command){

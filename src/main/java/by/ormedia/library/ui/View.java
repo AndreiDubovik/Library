@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import by.ormedia.library.controller.Command;
 import by.ormedia.library.core.ICommandLine;
+import by.ormedia.library.core.ILibraryItem;
 import by.ormedia.library.core.IReader;
 import by.ormedia.library.core.IView;
 
@@ -82,6 +83,16 @@ public class View implements IView, ICommandLine{
 	@Override
 	public void showMessage(String message) {
 		System.out.println(message);
+	}
+
+	@Override
+	public void showLibraryItems(List<ILibraryItem> list) {
+		System.out.println("список:");
+		for(ILibraryItem item:list){
+			System.out.println("id: "+item.getId()+"тип: "+item.getType()+"  наименование:"+item.getName());
+		}
+		System.out.println("всего: "+list.size()+" пунктов");
+		
 	}
 
 }

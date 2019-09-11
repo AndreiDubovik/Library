@@ -24,8 +24,7 @@ public class Library implements ILibrary{
 	}
 
 	public List<ILibraryItem> getLibraryItemsList(Object ob) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>(this.items.values());
 	}
 
 	public void add(ILibraryObject ob) {
