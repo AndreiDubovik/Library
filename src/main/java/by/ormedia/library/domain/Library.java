@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import by.ormedia.library.core.IArticle;
 import by.ormedia.library.core.IArticleContained;
@@ -24,6 +25,11 @@ public class Library implements ILibrary{
 	}
 
 	public List<ILibraryItem> getLibraryItemsList(Object ob) {
+		/*
+		 * Можно вставить проверку на тип передаваемого объекта
+		 * К примеру, если передать Type.BOOK
+		 * то получить список книг и т.д.
+		 */
 		return new ArrayList<>(this.items.values());
 	}
 
@@ -39,6 +45,16 @@ public class Library implements ILibrary{
 			List<IArticle>list = ((IArticleContained)ob).getArticles();
 			for(IArticle article:list)this.articles.put(article, (IArticleContained)ob);
 		}
+	}
+
+	@Override
+	public List<ILibraryItem> getFreeItems() {
+		return this.items.values().stream().filter(i -> i.isFree()).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<ILibraryItem> getBusyItems() {
+		return this.items.values().stream().filter(i -> !i.isFree()).collect(Collectors.toList());
 	}
 
 }

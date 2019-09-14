@@ -1,7 +1,12 @@
 package by.ormedia.library.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import by.ormedia.library.core.ILibraryItem;
 import by.ormedia.library.core.IReader;
 
 public class Reader implements IReader{
@@ -10,6 +15,9 @@ public class Reader implements IReader{
 
 	private String name;
 	private long id;
+	
+	private Set<ILibraryItem>readBooks = new HashSet<>();
+	private Set<ILibraryItem>onHold = new HashSet<>();
 	
 	public Reader(String name){
 		this.name = name;
@@ -49,6 +57,36 @@ public class Reader implements IReader{
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	@Override
+	public void read(ILibraryItem item) {
+		this.onHold.remove(item);
+		this.readBooks.add(item);
+		
+	}
+
+	@Override
+	public List<ILibraryItem> readItems() {
+		return new ArrayList<>(this.readBooks);
+	}
+
+	@Override
+	public List<ILibraryItem> onHold() {
+		// TODO Auto-generated method stub
+		return new ArrayList<>(this.onHold);
+	}
+
+	@Override
+	public void hold(ILibraryItem item) {
+		this.onHold.add(item);
+		
+	}
+
+	@Override
+	public boolean isRead(ILibraryItem item) {
+		// TODO Auto-generated method stub
+		return this.readBooks.contains(item);
 	}
 	
 	
