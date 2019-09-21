@@ -11,8 +11,6 @@ import by.ormedia.library.core.IReader;
 
 public class Reader implements IReader{
 	
-	private static long ID_COUNTER; 
-
 	private String name;
 	private long id;
 	
@@ -21,7 +19,15 @@ public class Reader implements IReader{
 	
 	public Reader(String name){
 		this.name = name;
-		this.id = ID_COUNTER++;
+	}
+	
+	public Reader(long id, String name){
+		this.name = name;
+		this.id = id;
+	}
+	
+	public void setId(long id){
+		this.id = id;
 	}
 	
 	@Override

@@ -5,6 +5,7 @@ import by.ormedia.library.core.ICommandLine;
 import by.ormedia.library.core.ILibrary;
 import by.ormedia.library.core.IView;
 import by.ormedia.library.domain.Book;
+import by.ormedia.library.domain.JDBCLibrary;
 import by.ormedia.library.domain.Library;
 import by.ormedia.library.domain.Reader;
 import by.ormedia.library.thread.LibraryLife;
@@ -19,33 +20,13 @@ public class Application {
 	private LibraryLife life;
 	
 	{
-		this.library = new Library();
+		this.library = new JDBCLibrary();
 		this.commandLine = new View();
 		this.view = (IView)this.commandLine;
-		this.life = new LibraryLife(this.library);
-		
-		this.library.add(new Book("Книга 1"));
-		this.library.add(new Book("Книга 2"));
-		this.library.add(new Book("Книга 3"));
-		this.library.add(new Book("Книга 4"));
-		this.library.add(new Book("Книга 5"));
-		this.library.add(new Book("Книга 6"));
-		this.library.add(new Book("Книга 7"));
-		this.library.add(new Book("Книга 8"));
-		
-		this.library.add(new Reader("Вася"));
-		this.library.add(new Reader("Коля"));
-		this.library.add(new Reader("Маша"));
-		this.library.add(new Reader("Галя"));
-		this.library.add(new Reader("Вова"));
-		this.library.add(new Reader("Саша"));
-		this.library.add(new Reader("Ибрагим"));
-		this.library.add(new Reader("Илья"));
 	}
 	
 	@SuppressWarnings("incomplete-switch")
 	public void run(){
-		this.life.start();
 		boolean run = true;
 		while(run){
 			Command com = this.commandLine.getNextCommand(SHOW_READERS,ADD_READER,EXIT,ADD_LIBRARY_ITEM,SHOW_ALL_LIBRARY_ITEMS);
